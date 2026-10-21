@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Emiliano Rafael López Beltrán</title>
+    <style>
+        body {
+            background-color: rgb(255, 214, 127);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        header, nav, main, footer, section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+
+        ol {
+            list-style-position: inside;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+        }
+        a, .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 12px 24px;
+            margin: 10px 0;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: linear-gradient(135deg, #feb47b, #ff7e5f);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        video, audio {
+            margin: 15px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .img-container {
+            margin: 15px auto;
+        }
+
+        img {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #314fa1;
+            color: white;
+        }
+
+        hr {
+            width: 80%;
+            border: 1px solid #d48806;
+            margin: 30px auto;
+        }
+        #reloj {
+            background: linear-gradient(135deg, #1f1f1f, #2d2d2d); 
+            color: #00ffcc; 
+            font-size: 5rem; 
+            font-weight: bold;
+            padding: 20px 50px;
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 204, 0.2); 
+            letter-spacing: 2px; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        img {
+    width: 200px;        
+    height: 200px;       
+    border-radius: 50%;  
+    object-fit: cover;   
+}
+</style>
+<time id="reloj">00:00:00</time>
+<script>
+  function actualizarReloj() {
+    const ahora = new Date();
+    const horaTexto = ahora.toLocaleTimeString(); 
+    document.getElementById('reloj').textContent = horaTexto;
+  }
+  setInterval(actualizarReloj, 1000);
+  actualizarReloj();
+</script>
+  <div class="contenedor-boton">
+    <button id="btn-fondo">
+      <span>🎨</span> Cambiar Fondo
+    </button>
+  </div>
+  <script>
+    const colores = ["#34495e", "#8e44ad", "#c0392b", "#16a085", "#27ae60", "#2c3e50"];
+    let indice = 0;
+
+    document.getElementById("btn-fondo").addEventListener("click", function() {
+      document.body.style.backgroundColor = colores[indice];
+      indice = (indice + 1) % colores.length;
+    });
+  </script>
+
+<script>
+  const estilosCorazon = document.createElement('style');
+  estilosCorazon.textContent = `
+    .corazon-flotante {
+        position: absolute;
+        font-size: 2.5rem;
+        pointer-events: none;
+        animation: flotar-corazon 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+        z-index: 9999;
+        user-select: none;
+    }
+    @keyframes flotar-corazon {
+        0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        50% { transform: translate(-50%, -100%) scale(1.4); opacity: 1; }
+        100% { transform: translate(-50%, -180%) scale(1); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(estilosCorazon);
+  document.addEventListener('dblclick', (evento) => {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon-flotante');
+      corazon.innerHTML = '💖';
+      corazon.style.left = evento.pageX + 'px';
+      corazon.style.top = evento.pageY + 'px';
+
+      document.body.appendChild(corazon);
+
+      corazon.addEventListener('animationend', () => {
+          corazon.remove();
+      });
+  });
+</script>
+
+
+
+
+  <style>
+        
+        .caja-imagen {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+       
+        .mi-foto {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            border-radius: 15px;
+            
+            transform-origin: bottom center; 
+        }
+
+        
+        .animar-rebote {
+            animation: rebote-elastico 0.6s ease;
+        }
+
+       
+        @keyframes rebote-elastico {
+            0%, 100% {
+                transform: scale(1, 1);
+            }
+            30% {
+                transform: scale(1.25, 0.75); 
+            }
+            40% {
+                transform: scale(0.75, 1.25); 
+            }
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="caja-imagen">
+       
+        <img id="imagenRebote" class="c:\Users\lopez\Downloads\Emiliano.index.html\1000078246.png" alt="Foto con rebote">
+    </div>
+
+    <script>
+        const imagen = document.getElementById('imagenRebote');
+
+        
+        imagen.addEventListener('mouseenter', () => {
+            
+            imagen.classList.add('animar-rebote');
+        });
+
+        
+        imagen.addEventListener('animationend', () => {
+           
+            imagen.classList.remove('animar-rebote');
+        });
+    </script>
+
+
+
+ <style>
+    
+        .caja-imagen {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .mi-foto {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            border-radius: 15px;
+            transform-origin: bottom center; 
+        }
+
+       
+        .animar-rebote {
+            animation: rebote-elastico 0.6s ease;
+        }
+
+
+        @keyframes rebote-elastico {
+            0%, 100% {
+                transform: scale(1, 1);
+            }
+            30% {
+                transform: scale(1.25, 0.75); 
+            }
+            40% {
+                transform: scale(0.75, 1.25); 
+            }
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <script>
+        const imagen9 = document.getElementById('imagenRebote');
+
+        
+        imagen.addEventListener('mouseenter', () => {
+            
+            imagen.classList.add('animar-rebote');
+        });
+
+        
+        imagen.addEventListener('animationend', () => {
+            
+            imagen.classList.remove('animar-rebote');
+        });
+    </script>
+
+
+
+</header>
+<h1><b><marquee behavior=alternate fast><u><i><p style="color: chocolate">MIS GUSTOS</p></b></u></marquee></h1></i>
+<nav>
+        <nav>
+            <ol>
+                <li><h2 style="color: rgb(49, 79, 161);">Emiliano Zapata</h2></li>
+                <li><h2 style="color: green;">Independencia</h2></li>
+                <li><h2 style="color: rgb(47, 108, 148);">Escuela Secundaria Técnica No.120</h2></li>
+                <li><h2 style="color: rgb(128, 0, 0);">Cecytem, Chicoloapan, Tezoyuca</h2></li>
+                <li><h2 style="color: rgb(128, 109, 0);">Rafael, Armando, Allyson, Jael, Rene</h6></li>
+                <li><h2 style="color: rgb(81, 0, 128);">Salir a caminar</h2></li>
+                <li><h2 style="color: green;">Jugar Last Day on Earth</h2></li>
+                <li><h2 style="color: green;">Ir a la naturaleza</h2></li>         
+                <li><h2 style="color: green;">Ir de viaje</h2></li>
+                <li><h2 style="color: green;">Reparar cosas</h2></li>
+                <li><h2 style="color: green;">Escuchar música</h2></li>
+                <li><h2 style="color: green;">Cocinar</h2></li>
+                <li><h2 style="color: green;">Pasear a mi perro</h2></li>
+                <li><h2 style="color: green;">Salir con mis amigos</h2></li>
+                <li><h2 style="color: green;">Ir a fiestas</h2></li>
+            </ol>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section>
+            <video width="640" height="360" controls>
+                <source src="c:\Users\lopez\Downloads\Emiliano.index.html\1000073264.mp4" type="video/mp4">
+            </video>
+
+            <audio controls>
+                <source src="road-trip.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <div>
+            <a href="file:///C:/Users/PC_10/Desktop/pl_304_nombre_proyecto/css/Emiliano%20L%C3%B3pez.html" target="_blank">Mis gustos</a>
+        </div>
+
+        <div>
+            <a href="cuestionario%20emiliano.html" target="_blank">Mi formulario</a>
+        </div>
+
+        <h3>Cosas que me agradan</h3>
+        <div>
+            <a href="https://www.redbull.com/mx-es/tags/mtb" target="_blank">Mtb bikes, Red Bull Eventos</a>
+        </div>
+        <div>
+            <a href="https://es.cadillac.com/all-vehicles" target="_blank">Vehículos Cadillac</a>
+        </div>
+        <div>
+            <a href="https://www.santacruzbicycles.com/es" target="_blank">Mtb bikes Santa Cruz</a>
+        </div>
+
+    
+        <div class="img-container">
+            <img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000070843.webp" alt="yo1" width="200" height="200">
+        </div>
+        <div class="img-container">
+            <img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000069780.jpg" alt="yo2" width="200" height="200">
+        </div>
+        <div class="img-container">
+            <img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000077110.jpg" alt="yo3" width="200" height="200">
+        </div>
+        <div class="img-container">
+            <img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000077745.jpg" alt="yo4" width="200" height="200">
+        </div>
+
+        <hr>
+
+        <section class="recuadro">
+        <h2>Mi visión</h2>
+        <h3><span>Una persona que trabaja descentemente cuando se lo propone y también hacer las cosas bien hechas es lo que más se trata de hacer, mi visión de siempre que es cumplir esos retos que van apareciendo.</span></h3>
+        </section>
+         <section class="recuadro">
+        <h2>Mi Misión</h2>
+        <h3><span>Mi Misión es poder hacer una página web con todo lo necesario para poder representar una autobiografía de mí con todos los requerimientos necesarios.</span></h3>
+        </section>
+        
+        <table>
+            <tr> 
+                <th>Amigo</th>
+                <th>Nombre</th>
+                <th>Foto</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>kevin</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000070843.webp" alt="Kevin" width="100" height="100"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Héctor</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000069780.jpg" alt="Héctor" width="100" height="100"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Maite</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000077745.jpg" alt="Maite" width="100" height="100"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr> 
+                <th>Amigo</th>
+                <th>Nombre</th>
+                <th>Foto</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Axel</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\amigos 12.jpeg" alt="Axel" width="100" height="100"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Neer</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\amigos 13.jpeg" alt="Neer" width="100" height="100"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Allison</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\amigos 11.jpeg" alt="Allison" width="100" height="100"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <th>Amigo</th>
+                <th>Nombre</th>
+                <th>Foto</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Román</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\amigos 4.jpeg" alt="Román" width="100" height="100"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Ricardo</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\amigos 10.jpeg" alt="Ricardo" width="100" height="100"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>julio</td>
+                <td><img src="c:\Users\lopez\Downloads\Emiliano.index.html\1000077185.jpg" alt="Oswaldo" width="100" height="100"></td>
+            </tr>
+        </table>
+    </main>
+
+    <footer>
+        <section>
+            <p id="Nombre"><strong>Emiliano Rafael</strong></p>
+            <p id="twitter">@emilianorafael</p>
+            <p id="correo">lobe100718hjcplma7@soycecytem.mx</p>
+        </section>
+    </footer>
+
+</body>
+</html>
